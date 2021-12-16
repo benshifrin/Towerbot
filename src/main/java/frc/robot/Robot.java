@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.*; 
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -20,6 +21,7 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
+  private RobotContainer m_rc = new RobotContainer(); 
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -78,8 +80,13 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+double inputLeft = 0;
+double inputRight = 0;
 
+
+m_rc.m_drive.TankDrive(inputLeft, inputRight);
+  }
   /** This function is called once when the robot is disabled. */
   @Override
   public void disabledInit() {}
